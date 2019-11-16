@@ -21,13 +21,5 @@ link:
 
 # Author:
 
-Group 7:
-
-Chaoran Wang, 
-
-Lu Li,  
-
-Qiaoyu Wang, 
-
-Yuhan Meng.
+Group 7: Chaoran Wang, Lu Li, Qiaoyu Wang, Yuhan Meng.
 
