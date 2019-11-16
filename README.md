@@ -20,6 +20,9 @@ An executive summary file include summary.pdf and summary.ipynb both summarize o
 link:
 
 # Author:
+
+Group 7:
+
 Chaoran Wang, 
 
 Lu Li,  
