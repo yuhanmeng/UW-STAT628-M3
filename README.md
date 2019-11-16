@@ -16,10 +16,10 @@ A slide file includes two slides,each for one presentation.
 
 An executive summary file include summary.pdf and summary.ipynb both summarize our analysis.
 
-#Shiny:
+# Shiny:
 link:
 
-#Author:
+# Author:
 Chaoran Wang, 
 
 Lu Li,  
