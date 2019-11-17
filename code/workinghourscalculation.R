@@ -1,5 +1,5 @@
 data<-read.csv("PA_business_cleaning.csv",header = TRUE,stringsAsFactors = FALSE) 
-data2<-data[,c("hours","stars")]
+data2<-data[,c("business_id","hours","stars")]
 head(data2)
 
 averworklist=c()
@@ -34,12 +34,12 @@ for (i in 1:nrow(data2)){
   if(i%%1000==0){print(i)}
 }
 
-data3=data.frame(stars=data2$stars,
+data3=data.frame(business_id=data2$business_id,
+                 stars=data2$stars,
                  averageworkingtime=averworklist,
                  totalworkingtime=totalworklist,
                  days=dayslist);
 write.csv(data3,"workinghours.csv",row.names=FALSE)
-
 
 
 
