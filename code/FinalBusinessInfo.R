@@ -17,4 +17,4 @@ topic3_scores$X=3
 topic4_scores$X=4
 topic5_scores$X=5
 topic_scores=rbind(topic1_scores,topic2_scores,topic3_scores,topic4_scores,topic5_scores)
-write.csv(finaldata,"topic_scores.csv",row.names=FALSE)
+write.csv(topic_scores,"topic_scores.csv",row.names=FALSE)
