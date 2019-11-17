@@ -1,3 +1,4 @@
+library(MASS)
 data<-read.csv("workinghours.csv",header = TRUE,stringsAsFactors = FALSE) 
 head(data)
 data$stars=factor(data$stars)
