@@ -1,4 +1,4 @@
-data = read.csv("PA_business_cleaning.csv", header = TRUE,stringsAsFactors = FALSE)
+data = read.csv("PA_business_cleaning2.csv", header = TRUE,stringsAsFactors = FALSE)
 topic<-read.csv("bus_with_topicindex.csv",header = TRUE,stringsAsFactors = FALSE) 
 topic=topic[,c("business","topicindex")]
 colnames(topic)[1]="business_id"
