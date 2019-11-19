@@ -1,9 +1,9 @@
 ﻿Topic,Attribute,Suggestion
 1,RestaurantsPriceRange2,"When the price range is at the middle level third level, customers tend to give better star rating."
-1,Ambience_divey,"considering the variance and mean of star under different status about ambience_divey, it's better to have the ambience of divey"
-1,Ambience_hipster,it's better to have a hipster ambience in your breakfast resturant! Because it will increase your star rating about 0.68 if your ambience stars to be hipster!
-1,Ambience_casual, it's better to have a causual ambience in your breakfast resturant! Because it will increase your star rating about 0.39 if your ambience stars to be casual!
-1,RestaurantsDelivery,it's better to provide RestaurantsDelivery  in your breakfast resturant! Because it will increase your star rating about 0.30 if you provide returant dilivery !
+1,Ambience_divey,"Considering the variance and mean of star under different status about ambience_divey, it's better to have the ambience of divey"
+1,Ambience_hipster,"It's better to have a hipster ambience in your breakfast resturant! Because it will increase your star rating about 0.68 if your ambience starts to be hipster!
+1,Ambience_casual, It's better to have a causual ambience in your breakfast resturant! Because it will increase your star rating about 0.39 if your ambience starts to be casual!
+1,RestaurantsDelivery,It's better to provide Restaurants delivery  in your breakfast resturant! Because it will increase your star rating about 0.30 if you provide returant dilivery !
 1,RestaurantsTableService,It's better to provide RestaurantsDelivery  in your breakfast resturant! It will largely increase your star rating!
 2,HasTV,It's unexpectable that bar type resturant are not suggested to provide TV as it will decrease your  star rating
 2,RestaurantsAttire," It's better for bar type resturant to have dressy attire, which may because it will attract more guests. And if the busniess change their attire into dressy style, it will roughly  increase star rating about 0.18."
