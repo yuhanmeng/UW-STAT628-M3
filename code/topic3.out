@@ -1,0 +1,291 @@
+             GGG   U   U  I  DDDD   EEEE
+            G   G  U   U  I  D   D  E
+            G      U   U  I  D   D  E
+            G  GG  U   U  I  D   D  EEE
+            G   G  U   U  I  D   D  E
+            G   G  U   U  I  D   D  E
+             GGG    UUU   I  DDDD   EEEE
+   
+ GUIDE Classification and Regression Trees and Forests
+ Version 32.0 (Build date: August 29, 2019)        
+ Compiled with NAG Fortran 6.2.0 on macOS Mojave 10.14.6     
+ Copyright (c) 1997-2019 Wei-Yin Loh. All rights reserved.
+ This software is based upon work supported by the U.S. Army Research Office,
+ the National Science Foundation and the National Institutes of Health.
+  
+ This job was started on 11/14/19 at 17:55
+  
+ Classification tree
+ No pruning
+ Data description file: desc3.txt
+ Training sample file: topic3.csv
+ Missing value code: Na
+ Records in data file start on line 2
+ Dependent variable is stars
+ Number of records in data file: 530
+ Length of longest entry in data file: 13
+ Missing values found among categorical variables
+ Separate categories will be created for missing categorical variables
+ Number of classes: 3
+ Warning: All values missing in categorical variable Alcohol
+ Warning: All values missing in categorical variable BYOBCorkage
+ Warning: All values missing in categorical variable BestNights_monday
+ Warning: All values missing in categorical variable BestNights_saturday
+ Warning: All values missing in categorical variable BestNights_sunday
+ Warning: All values missing in categorical variable BestNights_thursday
+ Warning: All values missing in categorical variable BestNights_tuesday
+ Warning: All values missing in categorical variable BestNights_wednesday
+ Warning: All values missing in categorical variable BikeParking
+ Warning: All values missing in categorical variable OutdoorSeating
+ Training sample class proportions of D variable stars:
+ Class  #Cases     Proportion
+ free      134     0.49264706
+ no        137     0.50367647
+ paid        1     0.00367647
+  
+      Total  #cases w/   #missing
+     #cases    miss. D  ord. vals   #X-var   #N-var   #F-var   #S-var
+        530        258          0        0        0        0        0
+     #P-var   #M-var   #B-var   #C-var   #I-var
+          0        0        0       65        0
+ No. cases used for training: 272
+ No. cases excluded due to 0 weight or missing D: 258
+  
+ Importance scoring of variables
+ Univariate split highest priority
+ Interaction splits 2nd priority; no linear splits
+ Fraction of noise variables erroneously identified as important = .01000
+ Simple node models
+ Equal priors
+ Unit misclassification costs
+ Split values for N and S variables based on exhaustive search
+ Maximum number of split levels: 3
+ Minimum node sample size: 5
+  
+ Note: final tree is shorter due to pruning of sibling nodes with same predicted values.
+ Structure of final tree. Each terminal node is marked with a T.
+  
+ Node cost is node misclassification cost divided by number of training cases
+        Node    Total    Train    Predicted        Node    Split          Interacting
+       label    cases    cases    class            cost    variables      variable
+           1      272      272    free           3.421E-01 RestaurantsAttire 
+           2      140      140    paid           2.593E-01 RestaurantsReservations 
+           4       97       97    paid           2.121E-01 RestaurantsDelivery 
+           8T      92       92    paid           2.054E-01 Smoking 
+           9T       5        5    free           1.008E-01 - 
+           5       43       43    no             2.535E-01 RestaurantsReservations 
+          10T      34       34    free           2.086E-01 RestaurantsGoodForGroups 
+          11T       9        9    no             5.816E-02 - 
+           3      132      132    free           1.570E-01 BusinessParking_garage 
+           6T      10       10    no             1.564E-01 - 
+           7T     122      122    free           1.408E-01 RestaurantsDelivery 
+  
+ Number of terminal nodes of final tree: 6
+ Total number of nodes of final tree: 11
+ Second best split variable (based on curvature test) at root node is BusinessParking_garage
+  
+ Classification tree:
+ At splits on categorical variables, values not in training data go to the right
+  
+ Node 1: RestaurantsAttire = "Na"
+   Node 2: RestaurantsReservations = "1"
+     Node 4: RestaurantsDelivery = "Na"
+       Node 8: paid
+     Node 4: RestaurantsDelivery /= "Na"
+       Node 9: free
+   Node 2: RestaurantsReservations /= "1"
+     Node 5: RestaurantsReservations = "2"
+       Node 10: free
+     Node 5: RestaurantsReservations /= "2"
+       Node 11: no
+ Node 1: RestaurantsAttire /= "Na"
+   Node 3: BusinessParking_garage = "False"
+     Node 6: no
+   Node 3: BusinessParking_garage /= "False"
+     Node 7: free
+ 
+ ***************************************************************
+ 
+  
+Node 1: Intermediate node
+ A case goes into Node 2 if RestaurantsAttire = "Na"
+ RestaurantsAttire mode = "Na"
+ Class      Number   Posterior
+ free          134     0.33333
+ no            137     0.33333
+ paid            1     0.33333
+ Number of training cases misclassified = 138
+ Predicted class is free
+ ----------------------------
+Node 2: Intermediate node
+ A case goes into Node 4 if RestaurantsReservations = "1"
+ RestaurantsReservations mode = "1"
+ Class      Number   Posterior
+ free           43     0.15873
+ no             96     0.34662
+ paid            1     0.49465
+ Number of training cases misclassified = 139
+ Predicted class is paid
+ ----------------------------
+Node 4: Intermediate node
+ A case goes into Node 8 if RestaurantsDelivery = "Na"
+ RestaurantsDelivery mode = "Na"
+ Class      Number   Posterior
+ free           22     0.09633
+ no             74     0.31693
+ paid            1     0.58674
+ Number of training cases misclassified = 96
+ Predicted class is paid
+ ----------------------------
+Node 8: Terminal node
+ Class      Number   Posterior
+ free           18     0.08057
+ no             73     0.31961
+ paid            1     0.59982
+ Number of training cases misclassified = 91
+ Predicted class is paid
+ ----------------------------
+Node 9: Terminal node
+ Class      Number   Posterior
+ free            4     0.80352
+ no              1     0.19648
+ paid            0     0.00000
+ Number of training cases misclassified = 1
+ Predicted class is free
+ ----------------------------
+Node 5: Intermediate node
+ A case goes into Node 10 if RestaurantsReservations = "2"
+ RestaurantsReservations mode = "2"
+ Class      Number   Posterior
+ free           21     0.49391
+ no             22     0.50609
+ paid            0     0.00000
+ Number of training cases misclassified = 21
+ Predicted class is no
+ ----------------------------
+Node 10: Terminal node
+ Class      Number   Posterior
+ free           20     0.59359
+ no             14     0.40641
+ paid            0     0.00000
+ Number of training cases misclassified = 14
+ Predicted class is free
+ ----------------------------
+Node 11: Terminal node
+ Class      Number   Posterior
+ free            1     0.11332
+ no              8     0.88668
+ paid            0     0.00000
+ Number of training cases misclassified = 1
+ Predicted class is no
+ ----------------------------
+Node 3: Intermediate node
+ A case goes into Node 6 if BusinessParking_garage = "False"
+ BusinessParking_garage mode = "True"
+ Class      Number   Posterior
+ free           91     0.69412
+ no             41     0.30588
+ paid            0     0.00000
+ Number of training cases misclassified = 41
+ Predicted class is free
+ ----------------------------
+Node 6: Terminal node
+ Class      Number   Posterior
+ free            3     0.30467
+ no              7     0.69533
+ paid            0     0.00000
+ Number of training cases misclassified = 3
+ Predicted class is no
+ ----------------------------
+Node 7: Terminal node
+ Class      Number   Posterior
+ free           88     0.72574
+ no             34     0.27426
+ paid            0     0.00000
+ Number of training cases misclassified = 34
+ Predicted class is free
+ ----------------------------
+  
+ ******************************************************
+ Variables used for splitting:
+ BusinessParking_garage
+ RestaurantsAttire
+ RestaurantsDelivery
+ RestaurantsReservations
+ 
+ Number of terminal nodes: 6
+ 
+  Predictor variables sorted by importance scores
+  Importance Scores
+ Scaled       Unscaled         Rank  Variable
+  100.0    4.01354E+00         1.00  RestaurantsAttire
+   33.7    1.35309E+00         2.00  GoodForMeal_brunch
+   33.4    1.34173E+00         3.00  RestaurantsDelivery
+   31.4    1.25846E+00         4.00  BusinessParking_garage
+   30.7    1.23028E+00         5.00  Smoking
+   28.6    1.14870E+00         6.00  GoodForMeal_dessert
+   26.9    1.08061E+00         7.00  BusinessParking_valet
+   26.3    1.05457E+00         8.00  GoodForMeal_lunch
+   25.0    1.00286E+00         9.00  Ambience_divey
+ ----------------- cut-off -------------------
+   22.8    9.15613E-01        11.00  Ambience_touristy
+   22.8    9.15613E-01        11.00  Ambience_trendy
+   22.8    9.15613E-01        11.00  Ambience_hipster
+   21.0    8.40959E-01        13.00  BYOB
+   19.6    7.88395E-01        14.00  GoodForMeal_latenight
+   19.5    7.81389E-01        15.00  RestaurantsReservations
+   17.8    7.16266E-01        16.00  Ambience_intimate
+   15.6    6.27278E-01        17.00  HappyHour
+   15.3    6.12294E-01        18.00  Ambience_romantic
+   14.4    5.76431E-01        19.00  Music_background_music
+   12.8    5.13121E-01        20.00  RestaurantsGoodForGroups
+   12.8    5.13094E-01        21.00  Ambience_upscale
+   12.7    5.11473E-01        22.00  RestaurantsTakeOut
+   12.6    5.05805E-01        23.00  GoodForMeal_dinner
+   12.4    4.96485E-01        24.00  BusinessAcceptsBitcoin
+   12.3    4.94705E-01        25.00  RestaurantsPriceRange2
+   12.3    4.92922E-01        26.00  RestaurantsTableService
+   12.0    4.80955E-01        27.00  Ambience_classy
+   10.8    4.34996E-01        28.00  GoodForMeal_breakfast
+    8.4    3.37252E-01        29.00  BusinessParking_lot
+    6.9    2.78457E-01        30.00  Open24Hours
+    6.1    2.44517E-01        38.00  Music_video
+    6.1    2.44517E-01        38.00  Music_jukebox
+    6.1    2.44517E-01        38.00  Music_no_music
+    6.1    2.44517E-01        38.00  Music_live
+    6.1    2.44517E-01        38.00  Music_karaoke
+    6.1    2.44517E-01        38.00  HasTV
+    6.1    2.44517E-01        38.00  BestNights_friday
+    6.1    2.44517E-01        38.00  GoodForKids
+    6.1    2.44517E-01        38.00  WheelchairAccessible
+    6.1    2.44517E-01        38.00  AgesAllowed
+    6.1    2.44517E-01        38.00  Corkage
+    6.1    2.44517E-01        38.00  DogsAllowed
+    6.1    2.44517E-01        38.00  GoodForDancing
+    6.1    2.44517E-01        38.00  NoiseLevel
+    6.1    2.44517E-01        38.00  Music_dj
+    6.0    2.40943E-01        51.00  OutdoorSeating
+    6.0    2.40943E-01        51.00  Alcohol
+    6.0    2.40943E-01        51.00  BYOBCorkage
+    6.0    2.40943E-01        51.00  BestNights_wednesday
+    6.0    2.40943E-01        51.00  BikeParking
+    6.0    2.40943E-01        51.00  BestNights_tuesday
+    6.0    2.40943E-01        51.00  BestNights_thursday
+    6.0    2.40943E-01        51.00  BestNights_sunday
+    6.0    2.40943E-01        51.00  BestNights_monday
+    6.0    2.40943E-01        51.00  AcceptsInsurance
+    6.0    2.40943E-01        51.00  BestNights_saturday
+    4.9    1.96241E-01        57.00  BusinessAcceptsCreditCards
+    3.3    1.32976E-01        58.00  ByAppointmentOnly
+    3.3    1.32800E-01        59.00  BusinessParking_validated
+    3.1    1.24590E-01        60.00  WiFi
+    1.7    6.75013E-02        61.00  BusinessParking_street
+    0.6    2.25887E-02        62.00  DriveThru
+    0.5    2.15270E-02        63.00  Caters
+    0.0    0.00000E+00        64.00  CoatCheck
+    0.0    0.00000E+00        65.00  Ambience_casual
+ Variables with unscaled scores above 1 are important
+ 
+ Number of important and unimportant split variables: 9, 56
+ Importance scores are stored in topic3.scr
+ Elapsed time in seconds: 6.5966
