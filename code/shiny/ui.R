@@ -28,10 +28,10 @@ ui = shinyUI(pageWithSidebar(
   
   mainPanel(tabsetPanel(
     tabPanel(h4("Topic Distribution"),h4(htmlOutput("err1")),
-             h3(htmlOutput("title1")),
-             column(6, h4(htmlOutput("top101title")), tableOutput("top101") ), br(),
+             h3(htmlOutput("title1"),align="center"),
+             column(6, h4(htmlOutput("top101title")), tableOutput("top101") ), 
              column(6, h4(htmlOutput("top102title")), tableOutput("top102") ), br(),
-             column(6, h4(htmlOutput("top103title")), tableOutput("top103") ), br(),
+             column(6, h4(htmlOutput("top103title")), tableOutput("top103") ), 
              column(6, h4(htmlOutput("top104title")), tableOutput("top104") )
              ),
     tabPanel(h4("Recommendation for Customer"),h4(htmlOutput("err2")),
