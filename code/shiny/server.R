@@ -9,6 +9,8 @@ data = read.csv("Finalbusiness.csv", header = TRUE,stringsAsFactors = FALSE)
 whdata = read.csv("workinghoursAfterLDA.csv", header = TRUE,stringsAsFactors = FALSE)
 topic_scores = read.csv("topic_scores.csv", header = TRUE,stringsAsFactors = FALSE)
 attrsug = read.csv("suggeations_on_attirbute.csv", header = TRUE,stringsAsFactors = FALSE)
+attrib = read.csv("attributes_cleaning.csv", header = TRUE,stringsAsFactors = FALSE)
+
 
 server = shinyServer(function(input, output) {
   
@@ -250,11 +252,13 @@ server = shinyServer(function(input, output) {
   output$suggestion1 = renderText({
     if(length(errmessage())==0){
       if(is.na(input$B_id) == FALSE | input$B_name != ""){
-        paste("Taken both profit and reputation (star level) into consideration, we recommend you work",
+        paste("We recommend you work<br/>",
               "<font color=\"#1C4FE1\"><b>",workingtime[which(workingtime$id==topicid()),2],"</b></font>",
-              "hours per day in week and",
+              "hours per day in week <br/>",
               "<font color=\"#1C4FE1\"><b>",workingtime[which(workingtime$id==topicid()),3],"</b></font>",
-              "hours per day in weekend.","<br/><br/>",
+              "hours per day in weekend","<br/><br/>",
+              
+              
               "Here are some suggestions of working slots:","<br/>",
               "<font color=\"#1C4FE1\"><b>",workingslot[which(workingslot$id==topicid()),2],"</b></font>",
               "in week","<br/>",
@@ -269,24 +273,38 @@ server = shinyServer(function(input, output) {
       if(is.na(input$B_id) == FALSE | input$B_name != ""){
         if(topicid()==5){
           df=attrsug[which(attrsug[,1]==topicid()),3]
+          df
         }
         else{
-          df=attrsug[which(attrsug[,1]==topicid()),2:3]
+          df=attrsug[which(attrsug[,1]==topicid()),]
+          indx=c()
+          for (i in 1:nrow(df)){
+            attribthis=attrib[which(attrib$business_id==businessinfo()$business_id),]
+            if(toupper(attribthis[1,which(colnames(attribthis)==df[i,2])])!=toupper(df[i,4])){
+              indx=c(indx,i)
+            }
+          }
+          if(length(indx)>0){
+            df=df[indx,2:3]
+            df
+          }else{
+            df=data.frame(a=("Well done, keep it!"))
+            df
+          }
         }
-        df
       }
     }
-  },colnames = TRUE)
+  },colnames = FALSE)
   
   suggest=function(x){
-    if(x>0.8){
-      s="perfect!"
-    }else if (x>0.6){
-      s="good!"
-    }else if (x>0.2){
-      s="need to be improved!"
+    if(x<0.2){
+      s="Perfect!"
+    }else if (x<0.4){
+      s="Good job."
+    }else if (x<0.9){
+      s="Need to be improved."
     }else{
-      s="soooo bad!"
+      s="It is a critical weakness for you!"
     }
   }
   
